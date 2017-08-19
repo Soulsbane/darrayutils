@@ -55,11 +55,13 @@ unittest
 */
 void insertValueAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 {
-	size_t index = array.countUntil(insertAfterValue);
+	immutable size_t index = array.countUntil(insertAfterValue);
+
 
 	if(index >= 0)
 	{
-		array.insertInPlace(++index, valueToInsert);
+		immutable size_t afterIndex = index + 1;
+		array.insertInPlace(afterIndex, valueToInsert);
 	}
 }
 
@@ -76,6 +78,9 @@ unittest
 
 	test2.insertValueAfter("two", "fifteen");
 	test2.should.equal(["one", "two", "fifteen", "three"]);
+
+	test2.insertValueAfter("three", "ego");
+	test2.should.equal(["one", "two", "fifteen", "three", "ego"]);
 
 	test3.insertValueAfter(3.3, 8.8);
 	test3.should.equal([1.1, 2.2, 3.3, 8.8]);
