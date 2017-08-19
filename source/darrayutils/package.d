@@ -2,5 +2,5 @@ module darrayutils;
 
 public
 {
-	import 	darrayutils.array;
+	import darrayutils.array;
 }
