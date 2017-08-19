@@ -53,7 +53,7 @@ unittest
 		insertAfterValue = The value to insert after.
 		valueToInsert = The value to insert.
 */
-void insertValueAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
+void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 {
 	immutable size_t index = array.countUntil(insertAfterValue);
 
@@ -73,16 +73,16 @@ unittest
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
 
-	test1.insertValueAfter(5, 88);
+	test1.insertAfter(5, 88);
 	test1.should.equal([1, 2, 3, 4, 5, 88, 6, 7]);
 
-	test2.insertValueAfter("two", "fifteen");
+	test2.insertAfter("two", "fifteen");
 	test2.should.equal(["one", "two", "fifteen", "three"]);
 
-	test2.insertValueAfter("three", "ego");
+	test2.insertAfter("three", "ego");
 	test2.should.equal(["one", "two", "fifteen", "three", "ego"]);
 
-	test3.insertValueAfter(3.3, 8.8);
+	test3.insertAfter(3.3, 8.8);
 	test3.should.equal([1.1, 2.2, 3.3, 8.8]);
 }
 
@@ -94,7 +94,7 @@ unittest
 		insertAfterValue = The value to insert after.
 		valueToInsert = The value to insert.
 */
-void insertValueBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert)
+void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 {
 	immutable size_t index = array.countUntil(insertAfterValue);
 
@@ -112,12 +112,12 @@ unittest
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
 
-	test1.insertValueBefore(5, 88);
+	test1.insertBefore(5, 88);
 	test1.should.equal([1, 2, 3, 4, 88, 5, 6, 7]);
 
-	test2.insertValueBefore("two", "fifteen");
+	test2.insertBefore("two", "fifteen");
 	test2.should.equal(["one", "fifteen", "two", "three"]);
 
-	test3.insertValueBefore(3.3, 8.8);
+	test3.insertBefore(3.3, 8.8);
 	test3.should.equal([1.1, 2.2, 8.8, 3.3]);
 }
