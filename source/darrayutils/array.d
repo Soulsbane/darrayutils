@@ -7,6 +7,7 @@ module darrayutils.array;
 		Paul Crane
 */
 import std.algorithm : countUntil;
+import std.array : insertInPlace;
 
 /**
 	Removes the specified element from the array in place.
@@ -18,7 +19,7 @@ import std.algorithm : countUntil;
 void remove(T)(ref T[] array, T value)
 {
 	import std.algorithm : remove;
-	size_t index = array.countUntil(value);
+	immutable size_t index = array.countUntil(value);
 
 	if(index >= 0)
 	{
@@ -54,7 +55,6 @@ unittest
 */
 void insertValueAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 {
-	import std.array : insertInPlace;
 	size_t index = array.countUntil(insertAfterValue);
 
 	if(index >= 0)
@@ -91,8 +91,7 @@ unittest
 */
 void insertValueBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 {
-	import std.array : insertInPlace;
-	size_t index = array.countUntil(insertAfterValue);
+	immutable size_t index = array.countUntil(insertAfterValue);
 
 	if(index >= 0)
 	{
