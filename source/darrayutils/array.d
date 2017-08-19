@@ -28,18 +28,20 @@ void remove(T)(ref T[] array, T value)
 
 unittest
 {
+	import fluent.asserts;
+
 	int[] test1 = [1, 2, 3];
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
 
 	test1.remove(2);
-	assert(test1 == [1, 3]);
+	test1.should.equal([1, 3]);
 
 	test2.remove("two");
-	assert(test2 == ["one", "three"]);
+	test2.should.equal(["one", "three"]);
 
 	test3.remove(2.2);
-	assert(test3 == [1.1, 3.3]);
+	test3.should.equal([1.1, 3.3]);
 }
 
 /**
@@ -63,18 +65,20 @@ void insertValueAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 
 unittest
 {
+	import fluent.asserts;
+
 	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
 
 	test1.insertValueAfter(5, 88);
-	assert(test1 == [1, 2, 3, 4, 5, 88, 6, 7]);
+	test1.should.equal([1, 2, 3, 4, 5, 88, 6, 7]);
 
 	test2.insertValueAfter("two", "fifteen");
-	assert(test2 == ["one", "two", "fifteen", "three"]);
+	test2.should.equal(["one", "two", "fifteen", "three"]);
 
 	test3.insertValueAfter(3.3, 8.8);
-	assert(test3 == [1.1, 2.2, 3.3, 8.8]);
+	test3.should.equal([1.1, 2.2, 3.3, 8.8]);
 }
 
 /**
@@ -98,16 +102,18 @@ void insertValueBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 
 unittest
 {
+	import fluent.asserts;
+
 	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
 
 	test1.insertValueBefore(5, 88);
-	assert(test1 == [1, 2, 3, 4, 88, 5, 6, 7]);
+	test1.should.equal([1, 2, 3, 4, 88, 5, 6, 7]);
 
 	test2.insertValueBefore("two", "fifteen");
-	assert(test2 == ["one", "fifteen", "two", "three"]);
+	test2.should.equal(["one", "fifteen", "two", "three"]);
 
 	test3.insertValueBefore(3.3, 8.8);
-	assert(test3 == [1.1, 2.2, 8.8, 3.3]);
+	test3.should.equal([1.1, 2.2, 8.8, 3.3]);
 }
