@@ -87,7 +87,6 @@ void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 {
 	immutable size_t index = array.countUntil(insertAfterValue);
 
-
 	if(index >= 0)
 	{
 		immutable size_t afterIndex = index + 1;
@@ -147,6 +146,9 @@ unittest
 
 	test2.insertBefore("two", "fifteen");
 	test2.should.equal(["one", "fifteen", "two", "three"]);
+
+	test2.insertBefore("one", "eighty");
+	test2.should.equal(["eighty", "one", "fifteen", "two", "three"]);
 
 	test3.insertBefore(3.3, 8.8);
 	test3.should.equal([1.1, 2.2, 8.8, 3.3]);
