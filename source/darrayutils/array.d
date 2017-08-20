@@ -6,8 +6,8 @@ module darrayutils.array;
 	Authors:
 		Paul Crane
 */
-import std.algorithm : countUntil;
-import std.array : insertInPlace;
+import std.algorithm : countUntil, filter;
+import std.array : insertInPlace, array;
 
 /**
 	Removes the specified element from the array in place.
@@ -43,6 +43,36 @@ unittest
 
 	test3.remove(2.2);
 	test3.should.equal([1.1, 3.3]);
+}
+
+/**
+	Removes all of the specified values from the array in place.
+
+	Params:
+		array = The array to remove values from.
+		value = The values to remove.
+*/
+void removeAll(T)(ref T[] arr, T value)
+{
+	arr = arr.filter!(a => a != value).array();
+}
+
+unittest
+{
+	import fluent.asserts;
+
+	int[] test1 = [1, 2, 3, 1, 2, 3, 1, 2, 3];
+	string[] test2 = ["one", "one", "two", "three", "one", "five"];
+	double[] test3 = [1.1, 2.2, 3.3, 1.1, 2.2, 3.3];
+
+	test1.removeAll(2);
+	test1.should.equal([1, 3, 1, 3, 1, 3]);
+
+	test2.removeAll("one");
+	test2.should.equal(["two", "three", "five"]);
+
+	test3.removeAll(2.2);
+	test3.should.equal([1.1, 3.3, 1.1, 3.3]);
 }
 
 /**
