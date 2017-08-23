@@ -13,6 +13,7 @@ version(unittest)
 {
 	import fluent.asserts;
 }
+
 /**
 	Removes the specified element from the array in place.
 
@@ -20,7 +21,7 @@ version(unittest)
 		array = The array to remove value from.
 		value = The value to remove.
 */
-void remove(T)(ref T[] array, T value)
+void remove(T)(ref T[] array, T value) nothrow pure @safe
 {
 	import std.algorithm : remove;
 	immutable size_t index = array.countUntil(value);
@@ -54,7 +55,7 @@ unittest
 		array = The array to remove values from.
 		value = The values to remove.
 */
-void removeAll(T)(ref T[] arr, T value)
+void removeAll(T)(ref T[] arr, T value) nothrow pure @safe
 {
 	arr = arr.filter!(a => a != value).array();
 }
@@ -83,7 +84,7 @@ unittest
 		insertAfterValue = The value to insert after.
 		valueToInsert = The value to insert.
 */
-void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
+void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow pure @safe
 {
 	immutable size_t index = array.countUntil(insertAfterValue);
 
@@ -121,7 +122,7 @@ unittest
 		insertAfterValue = The value to insert after.
 		valueToInsert = The value to insert.
 */
-void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert)
+void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow pure @safe
 {
 	immutable size_t index = array.countUntil(insertAfterValue);
 
