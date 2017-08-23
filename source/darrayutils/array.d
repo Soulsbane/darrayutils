@@ -9,6 +9,10 @@ module darrayutils.array;
 import std.algorithm : countUntil, filter;
 import std.array : insertInPlace, array;
 
+version(unittest)
+{
+	import fluent.asserts;
+}
 /**
 	Removes the specified element from the array in place.
 
@@ -29,8 +33,6 @@ void remove(T)(ref T[] array, T value)
 
 unittest
 {
-	import fluent.asserts;
-
 	int[] test1 = [1, 2, 3];
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
@@ -59,8 +61,6 @@ void removeAll(T)(ref T[] arr, T value)
 
 unittest
 {
-	import fluent.asserts;
-
 	int[] test1 = [1, 2, 3, 1, 2, 3, 1, 2, 3];
 	string[] test2 = ["one", "one", "two", "three", "one", "five"];
 	double[] test3 = [1.1, 2.2, 3.3, 1.1, 2.2, 3.3];
@@ -96,8 +96,6 @@ void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 
 unittest
 {
-	import fluent.asserts;
-
 	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
@@ -135,8 +133,6 @@ void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert)
 
 unittest
 {
-	import fluent.asserts;
-
 	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
 	string[] test2 = ["one", "two", "three"];
 	double[] test3 = [1.1, 2.2, 3.3];
