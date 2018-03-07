@@ -9,11 +9,6 @@ module darrayutils.array;
 import std.algorithm : countUntil, filter;
 import std.array : insertInPlace, array;
 
-version(unittest)
-{
-	import fluent.asserts;
-}
-
 /**
 	Removes the specified element from the array in place.
 
@@ -39,13 +34,13 @@ unittest
 	double[] test3 = [1.1, 2.2, 3.3];
 
 	test1.remove(2);
-	test1.should.equal([1, 3]);
+	assert(test1 == [1, 3]);
 
 	test2.remove("two");
-	test2.should.equal(["one", "three"]);
+	assert(test2 == ["one", "three"]);
 
 	test3.remove(2.2);
-	test3.should.equal([1.1, 3.3]);
+	assert(test3 == [1.1, 3.3]);
 }
 
 /**
@@ -67,13 +62,13 @@ unittest
 	double[] test3 = [1.1, 2.2, 3.3, 1.1, 2.2, 3.3];
 
 	test1.removeAll(2);
-	test1.should.equal([1, 3, 1, 3, 1, 3]);
+	assert(test1 == [1, 3, 1, 3, 1, 3]);
 
 	test2.removeAll("one");
-	test2.should.equal(["two", "three", "five"]);
+	assert(test2 == ["two", "three", "five"]);
 
 	test3.removeAll(2.2);
-	test3.should.equal([1.1, 3.3, 1.1, 3.3]);
+	assert(test3 == [1.1, 3.3, 1.1, 3.3]);
 }
 
 /**
@@ -102,16 +97,16 @@ unittest
 	double[] test3 = [1.1, 2.2, 3.3];
 
 	test1.insertAfter(5, 88);
-	test1.should.equal([1, 2, 3, 4, 5, 88, 6, 7]);
+	assert(test1 == [1, 2, 3, 4, 5, 88, 6, 7]);
 
 	test2.insertAfter("two", "fifteen");
-	test2.should.equal(["one", "two", "fifteen", "three"]);
+	assert(test2 == ["one", "two", "fifteen", "three"]);
 
 	test2.insertAfter("three", "ego");
-	test2.should.equal(["one", "two", "fifteen", "three", "ego"]);
+	assert(test2 == ["one", "two", "fifteen", "three", "ego"]);
 
 	test3.insertAfter(3.3, 8.8);
-	test3.should.equal([1.1, 2.2, 3.3, 8.8]);
+	assert(test3 == [1.1, 2.2, 3.3, 8.8]);
 }
 
 /**
@@ -139,14 +134,14 @@ unittest
 	double[] test3 = [1.1, 2.2, 3.3];
 
 	test1.insertBefore(5, 88);
-	test1.should.equal([1, 2, 3, 4, 88, 5, 6, 7]);
+	assert(test1 == [1, 2, 3, 4, 88, 5, 6, 7]);
 
 	test2.insertBefore("two", "fifteen");
-	test2.should.equal(["one", "fifteen", "two", "three"]);
+	assert(test2 == ["one", "fifteen", "two", "three"]);
 
 	test2.insertBefore("one", "eighty");
-	test2.should.equal(["eighty", "one", "fifteen", "two", "three"]);
+	assert(test2 == ["eighty", "one", "fifteen", "two", "three"]);
 
 	test3.insertBefore(3.3, 8.8);
-	test3.should.equal([1.1, 2.2, 8.8, 3.3]);
+	assert(test3 == [1.1, 2.2, 8.8, 3.3]);
 }
