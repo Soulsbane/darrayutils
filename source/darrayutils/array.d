@@ -47,7 +47,7 @@ unittest
 	Removes all of the specified values from the array in place.
 
 	Params:
-		array = The array to remove values from.
+		arr = The array to remove values from.
 		value = The values to remove.
 */
 void removeAll(T)(ref T[] arr, T value) nothrow pure @safe
