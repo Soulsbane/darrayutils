@@ -27,6 +27,8 @@ void remove(T)(ref T[] array, T value) nothrow pure @safe
 	}
 }
 
+///
+@("remove")
 unittest
 {
 	int[] test1 = [1, 2, 3];
@@ -55,6 +57,8 @@ void removeAll(T)(ref T[] arr, T value) nothrow pure @safe
 	arr = arr.filter!(a => a != value).array();
 }
 
+///
+@("removeAll")
 unittest
 {
 	int[] test1 = [1, 2, 3, 1, 2, 3, 1, 2, 3];
@@ -90,6 +94,8 @@ void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow 
 	}
 }
 
+///
+@("insertAfter")
 unittest
 {
 	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
@@ -127,6 +133,8 @@ void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow
 	}
 }
 
+///
+@("insertBefore")
 unittest
 {
 	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
