@@ -135,6 +135,27 @@ void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow
 	}
 }
 
+///
+@("insertBefore")
+unittest
+{
+	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
+	string[] test2 = ["one", "two", "three"];
+	double[] test3 = [1.1, 2.2, 3.3];
+
+	test1.insertBefore(5, 88);
+	assert(test1 == [1, 2, 3, 4, 88, 5, 6, 7]);
+
+	test2.insertBefore("two", "fifteen");
+	assert(test2 == ["one", "fifteen", "two", "three"]);
+
+	test2.insertBefore("one", "eighty");
+	assert(test2 == ["eighty", "one", "fifteen", "two", "three"]);
+
+	test3.insertBefore(3.3, 8.8);
+	assert(test3 == [1.1, 2.2, 8.8, 3.3]);
+}
+
 /**
 	Checks for a last value in an array and returns it or returns the default value.
 
@@ -189,23 +210,3 @@ unittest
 	assert(emptyArr.firstOrDefault() == 0);
 }
 
-///
-@("insertBefore")
-unittest
-{
-	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
-	string[] test2 = ["one", "two", "three"];
-	double[] test3 = [1.1, 2.2, 3.3];
-
-	test1.insertBefore(5, 88);
-	assert(test1 == [1, 2, 3, 4, 88, 5, 6, 7]);
-
-	test2.insertBefore("two", "fifteen");
-	assert(test2 == ["one", "fifteen", "two", "three"]);
-
-	test2.insertBefore("one", "eighty");
-	assert(test2 == ["eighty", "one", "fifteen", "two", "three"]);
-
-	test3.insertBefore(3.3, 8.8);
-	assert(test3 == [1.1, 2.2, 8.8, 3.3]);
-}
