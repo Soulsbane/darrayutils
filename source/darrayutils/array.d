@@ -210,3 +210,33 @@ unittest
 	assert(emptyArr.firstOrDefault() == 0);
 }
 
+/**
+	Checks for a specified element's position in the array and returns its value or returns the default value.
+
+	Params:
+		values = The array to get value from.
+		defaultValue = The default value if the array is empty.
+
+	Returns:
+		The specified element's position in the array and returns its value or returns the default value.
+*/
+T elementAtOrDefault(T)(T[] values, T element, const T defaultValue = T.init)
+{
+	return element < values.length ? values[element] : defaultValue;
+}
+
+///
+@("elementAtOrDefault")
+unittest
+{
+	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
+	int[] emptyArr = [];
+
+	assert(test1.elementAtOrDefault(1, 0) == 2);
+	assert(test1.elementAtOrDefault(0, 888) == 1);
+	assert(test1.elementAtOrDefault(6, 0) == 7);
+	assert(test1.elementAtOrDefault(7, 888) == 888);
+
+	assert(emptyArr.firstOrDefault(777) == 777);
+	assert(emptyArr.firstOrDefault(777) == 777);
+}
