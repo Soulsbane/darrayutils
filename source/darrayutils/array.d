@@ -1,5 +1,7 @@
 module darrayutils.array;
 
+import std.range;
+
 /**
 	Various functions for working with arrays.
 
@@ -131,6 +133,33 @@ void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow
 	{
 		array.insertInPlace(index, valueToInsert);
 	}
+}
+
+/**
+	Checks for a last value in an array and returns it or returns the default value.
+
+	Params:
+		values = The array to get value from.
+		defaultValue = The default value if the array is empty.
+
+	Returns:
+		The last value in the array and returns it or returns the default value.
+*/
+T lastOrDefault(T)(T[] values, const T defaultValue = T.init)
+{
+	return values.empty ? defaultValue : values.back;
+}
+
+///
+@("lastOrDefault")
+unittest
+{
+	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
+	int[] emptyArr = [];
+
+	assert(test1.lastOrDefault(0) == 7);
+	assert(emptyArr.lastOrDefault(0) == 0);
+	assert(emptyArr.lastOrDefault() == 0);
 }
 
 ///
