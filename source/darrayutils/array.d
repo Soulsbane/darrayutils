@@ -162,6 +162,33 @@ unittest
 	assert(emptyArr.lastOrDefault() == 0);
 }
 
+/**
+	Checks for a first value in an array and returns it or returns the default value.
+
+	Params:
+		values = The array to get value from.
+		defaultValue = The default value if the array is empty.
+
+	Returns:
+		The first value in the array and returns it or returns the default value.
+*/
+T firstOrDefault(T)(T[] values, const T defaultValue = T.init)
+{
+	return values.empty ? defaultValue : values.front;
+}
+
+///
+@("firstOrDefault")
+unittest
+{
+	int[] test1 = [1, 2, 3, 4, 5, 6, 7];
+	int[] emptyArr = [];
+
+	assert(test1.firstOrDefault(0) == 1);
+	assert(emptyArr.firstOrDefault(0) == 0);
+	assert(emptyArr.firstOrDefault() == 0);
+}
+
 ///
 @("insertBefore")
 unittest
