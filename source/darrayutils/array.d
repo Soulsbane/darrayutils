@@ -218,6 +218,7 @@ unittest
 
 	Params:
 		values = The array to get value from.
+		element = The position in the array to get.
 		defaultValue = The default value if the array is empty.
 
 	Returns:
