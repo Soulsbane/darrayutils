@@ -1,7 +1,4 @@
 module darrayutils.array;
-
-//import std.range;
-
 /**
 	Various functions for working with arrays.
 
