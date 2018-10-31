@@ -8,8 +8,6 @@ import std.range;
 	Authors:
 		Paul Crane
 */
-import std.algorithm : countUntil, filter;
-import std.array : insertInPlace, array;
 
 /**
 	Removes the specified element from the array in place.
@@ -20,7 +18,7 @@ import std.array : insertInPlace, array;
 */
 void remove(T)(ref T[] array, T value) nothrow pure @safe
 {
-	import std.algorithm : remove;
+	import std.algorithm : remove, countUntil;
 	immutable size_t index = array.countUntil(value);
 
 	if(index >= 0)
@@ -56,6 +54,8 @@ unittest
 */
 void removeAll(T)(ref T[] arr, T value) nothrow pure @safe
 {
+	import std.algorithm : filter;
+	import std.array : array;
 	arr = arr.filter!(a => a != value).array();
 }
 
@@ -87,10 +87,12 @@ unittest
 */
 void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow pure @safe
 {
+	import std.algorithm : countUntil;
 	immutable size_t index = array.countUntil(insertAfterValue);
 
 	if(index >= 0)
 	{
+		import std.array : insertInPlace;
 		immutable size_t afterIndex = index + 1;
 		array.insertInPlace(afterIndex, valueToInsert);
 	}
@@ -127,10 +129,12 @@ unittest
 */
 void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow pure @safe
 {
+	import std.algorithm : countUntil;
 	immutable size_t index = array.countUntil(insertAfterValue);
 
 	if(index >= 0)
 	{
+		import std.array : insertInPlace;
 		array.insertInPlace(index, valueToInsert);
 	}
 }
@@ -240,3 +244,27 @@ unittest
 	assert(emptyArr.firstOrDefault(777) == 777);
 	assert(emptyArr.firstOrDefault(777) == 777);
 }
+
+/**
+	Counts the number of unique elements in an array.
+
+	Params:
+		values = The array to count the number of uniques.
+
+	Returns:
+		The number of unique elements in an array.
+*/
+size_t countUnique(T)(T[] values)
+{
+	import std.algorithm : sort, uniq, count;
+	return values.sort().uniq.count;
+}
+
+///
+@("countUnique")
+unittest
+{
+	auto result = [1, 3, 2, 2, 3];
+	assert(result.countUnique() == 3);
+}
+
