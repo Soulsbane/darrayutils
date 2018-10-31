@@ -1,6 +1,6 @@
 module darrayutils.array;
 
-import std.range;
+//import std.range;
 
 /**
 	Various functions for working with arrays.
@@ -172,6 +172,7 @@ unittest
 */
 T lastOrDefault(T)(T[] values, const T defaultValue = T.init)
 {
+	import std.range : empty, back;
 	return values.empty ? defaultValue : values.back;
 }
 
@@ -199,6 +200,7 @@ unittest
 */
 T firstOrDefault(T)(T[] values, const T defaultValue = T.init)
 {
+	import std.range : empty, front;
 	return values.empty ? defaultValue : values.front;
 }
 
