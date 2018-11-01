@@ -1,10 +1,10 @@
-module darrayutils.array;
 /**
 	Various functions for working with arrays.
 
 	Authors:
 		Paul Crane
 */
+module darrayutils.array;
 
 /**
 	Removes the specified element from the array in place.
