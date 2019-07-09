@@ -268,3 +268,31 @@ unittest
 	assert(result.countUnique() == 3);
 }
 
+/**
+	Returns the values not found in the second array when compared to the first array
+
+	Params:
+		first = The first array to search.
+		second = The array to compare to.
+	Returns:
+		The values not found in the second array when compared to the first array
+*/
+auto getDifference(T)(T[] first, T[] second)
+{
+	import std.algorithm.searching : canFind;
+	import std.algorithm.iteration: filter;
+
+	// first = savedVarsFilenames second = installedAddons. Ignore this comment. This was created
+	// to compare wow's installed addons and the saved variable files.
+	return first.filter!(a => !second.canFind(a));
+}
+
+unittest
+{
+	import std.algorithm.comparison : equal;
+
+	immutable int[] savedVars = [1, 2, 3, 4, 5];
+	immutable int[] addonsInstalled = [2, 4];
+
+	equal(getDifference(savedVars, addonsInstalled), [1, 3, 5]);
+}
