@@ -82,7 +82,7 @@ unittest
 		insertAfterValue = The value to insert after.
 		valueToInsert = The value to insert.
 */
-void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow pure @safe
+void insertAfter(T)(ref T[] array, T insertAfterValue, T valueToInsert) pure @safe
 {
 	import std.algorithm : countUntil;
 	immutable size_t index = array.countUntil(insertAfterValue);
@@ -124,7 +124,7 @@ unittest
 		insertAfterValue = The value to insert after.
 		valueToInsert = The value to insert.
 */
-void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) nothrow pure @safe
+void insertBefore(T)(ref T[] array, T insertAfterValue, T valueToInsert) pure @safe
 {
 	import std.algorithm : countUntil;
 	immutable size_t index = array.countUntil(insertAfterValue);
