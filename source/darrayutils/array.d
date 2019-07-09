@@ -287,6 +287,8 @@ auto getDifference(T)(T[] first, T[] second)
 	return first.filter!(a => !second.canFind(a));
 }
 
+///
+@("getDifference")
 unittest
 {
 	import std.algorithm.comparison : equal;
