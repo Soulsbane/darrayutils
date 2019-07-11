@@ -296,5 +296,5 @@ unittest
 	immutable int[] savedVars = [1, 2, 3, 4, 5];
 	immutable int[] addonsInstalled = [2, 4];
 
-	equal(getDifference(savedVars, addonsInstalled), [1, 3, 5]);
+	assert(equal(getDifference(savedVars, addonsInstalled), [1, 3, 5]));
 }
